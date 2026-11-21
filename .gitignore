@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+# Raw downloads: scripts/fetch_data.py recreates them
+data/sec/
+data/prices/
+data/filings/
+data/dgs10.csv
+data/company_tickers.json
+~$*.xlsx
