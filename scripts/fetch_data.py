@@ -23,7 +23,7 @@ COMPANIES = {  # ticker: SEC CIK number
     "NRG": 1013871,  # NRG Energy
     "TLN": 1622536,  # Talen Energy
 }
-PRICES = ["CEG", "VST", "NRG", "TLN", "SPY"]
+PRICES = ["CEG", "VST", "NRG", "TLN", "SPY", "NVDA", "SMH", "QQQ"]
 
 
 def main():

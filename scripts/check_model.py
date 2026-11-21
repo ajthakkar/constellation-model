@@ -47,5 +47,5 @@ print("attribution:", [(s[f"B{r}"].value, s[f"C{r}"].value, s[f"D{r}"].value, s[
 sm = wb["Summary"]
 for r in range(16, 23):
     print("FF", sm[f"B{r}"].value, sm[f"C{r}"].value, sm[f"D{r}"].value, sm[f"F{r}"].value)
-for r in range(44, 48):
+for r in range(44, 49):
     print(sm[f"B{r}"].value)

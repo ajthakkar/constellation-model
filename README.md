@@ -15,8 +15,15 @@ In September 2026 I pitched Constellation Energy as a long at $285.93 with a 12-
 | Bull case (management's 20% growth) | DCF **$345**, 12-month target **$364** |
 | Bear case (8% growth) | DCF **$138**, 12-month target **$205** |
 | Growth today's price needs | about **15–17.5%** a year through 2029, below management's 20% target |
+| My call now | **Exit** (see below) |
 
 **The business beat the pitch; the stock didn't.** The price change splits exactly into earnings and multiple: (1 + 5.4%) × (1 − 21.2%) − 1 = −17.0%. Every bit of the drop came from investors paying less per dollar of earnings, and the gas-heavy peers fell just as hard, so this looks like a sector-wide repricing rather than anything specific to Constellation.
+
+## Decision: exit (Nov 20, 2026)
+
+The pitch set exit rules around the drivers of the thesis: new power deals, power prices, and policy. Two of them haven't fired (no canceled contracts; the Crane restart is on track). The third, hyperscalers pulling back on AI spending, isn't in their filings yet, but the market is pricing it: since the pitch, Nvidia is down 42.5%, the semiconductor ETF (SMH) 28.6%, and the Nasdaq-100 14.1%. The November elections add policy uncertainty for nuclear.
+
+Constellation itself is executing, and the base case still shows upside. But the reason to own it was AI-driven power demand, and that is the part in question. So I'd exit rather than wait for the third rule to show up in filings.
 
 ## The workbook
 

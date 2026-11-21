@@ -575,8 +575,8 @@ def main():
          "No cancellation reported. Q3 release: new 20-year, 270 MW agreement and a long-term collaboration with Google."),
         ("The NRC delays the Crane restart past 2028", "Not triggered",
          "Q2 release: NRC approved Crane's fuel license and FERC granted the interconnection waiver. No delay reported since."),
-        ("Hyperscaler capital spending stalls noticeably", "Not checked here",
-         "Needs the hyperscalers' own filings; not part of this model."),
+        ("Hyperscaler capital spending stalls noticeably", "Warning signs",
+         "Not yet visible in the hyperscalers' filings, but the market is pricing it in: see the AI and chip stocks below."),
     ]
     for i, (a, b, c) in enumerate(checks):
         r = 21 + i
@@ -585,7 +585,35 @@ def main():
         style(ws[f"F{r}"], SUB).value = c
         ws[f"F{r}"].alignment = Alignment(wrap_text=True, vertical="top")
         ws.row_dimensions[r].height = 30
-    for r in range(4, 24):
+    section(ws, 25, "Market signals on AI spending, same period", 5)
+    header_row(ws, 26, ["Total return since the pitch", "Sep 10, 2026", "Nov 20, 2026", "Return"])
+    for i, (t, label) in enumerate([("NVDA", "Nvidia (NVDA)"), ("SMH", "Semiconductor ETF (SMH)"), ("QQQ", "Nasdaq-100 (QQQ)")]):
+        r = 27 + i
+        ws[f"B{r}"] = label
+        _, a0 = price(t, "2026-09-10")
+        _, a1 = price(t, "2026-11-20")
+        inp(ws, f"C{r}", round(a0, 4), USD, f"{YAHOO}: close adjusted for dividends, Sep 10, 2026")
+        inp(ws, f"D{r}", round(a1, 4), USD, f"{YAHOO}: close adjusted for dividends, Nov 20, 2026")
+        style(ws[f"E{r}"], fmt=PCT).value = f"=D{r}/C{r}-1"
+
+    section(ws, 31, "Decision as of Nov 20, 2026", 5)
+    style(ws["B32"], BOLD).value = "Recommendation"
+    style(ws["C32"], BOLD, fill=KEY_FILL).value = "Exit"
+    reasons = [
+        "The pitch's exit rules were about the drivers of the thesis: new power deals, power prices, and policy.",
+        "Nvidia and chip stocks have fallen sharply since the pitch (above), which says the market doubts the AI spending behind the power-demand story. The November elections add policy uncertainty for nuclear.",
+        "The company is still executing (guidance raised twice), but the reason to own it was AI-driven demand, and that is the part in question. Today's price already assumes growth below management's target, so the upside case needs the AI story to recover.",
+    ]
+    for i, text in enumerate(reasons):
+        r = 33 + i
+        c = ws[f"B{r}"]
+        c.value = text
+        style(c)
+        ws.merge_cells(f"B{r}:F{r}")
+        c.alignment = Alignment(wrap_text=True, vertical="top")
+        ws.row_dimensions[r].height = 30
+
+    for r in range(4, 33):
         b = ws[f"B{r}"]
         if b.value and b.font.color is None:
             style(b)
@@ -671,6 +699,7 @@ def main():
         '="2. Vistra and NRG fell about as much (VST "&TEXT(\'Pitch scorecard\'!E7,"0%")&", NRG "&TEXT(\'Pitch scorecard\'!E8,"0%")&"), so this was a sector-wide repricing, not a CEG-specific miss."',
         '="3. At an "&TEXT(Inputs!C42,"0.0%")&" cost of equity, today\'s price is justified on cash flows only if adjusted EPS grows about "&TEXT(Valuation!C95-0.025,"0%")&"–"&TEXT(Valuation!C95,"0.0%")&" a year through 2029, below management\'s 20% target (Valuation sheet, break-even table)."',
         '="4. Base case: 12-month target $"&TEXT(Valuation!E74,"0")&" ("&TEXT(Valuation!E74/Inputs!C6-1,"+0%;-0%")&"); DCF value $"&TEXT(Valuation!D74,"0")&". The gap is the question: is a "&TEXT(Valuation!F9,"0")&"x P/E justified by growth after 2029?"',
+        '="5. Decision (Nov 20, 2026): exit. Nvidia is down "&TEXT(-\'Pitch scorecard\'!E27,"0%")&" and chip stocks "&TEXT(-\'Pitch scorecard\'!E28,"0%")&" since the pitch, so the AI spending behind the thesis is in doubt, and policy after the November elections is less certain (Pitch scorecard sheet)."',
     ]
     for i, f in enumerate(lines):
         c = ws[f"B{44 + i}"]
